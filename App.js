@@ -17,9 +17,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  
+
   text:{
-      color: 'green',
-      fontSize: 30,
+    color: 'green',
+    fontSize: 30,
   }
 });
