@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   },
 
   text:{
-    color: 'green',
     fontSize: 30,
   }
 });
