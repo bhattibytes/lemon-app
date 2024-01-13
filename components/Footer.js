@@ -15,13 +15,14 @@ export default function Footer() {
 const footerStyles = StyleSheet.create({
   viewContainer: {
     flex: 0.15, 
-    backgroundColor: '#F4CE14'
+    backgroundColor: '#EE9972'
   },
 
   text: {
     padding: 5, 
-    fontSize: 12, 
+    fontSize: 18, 
     color: 'black', 
-    textAlign: 'center'
+    textAlign: 'center',
+    fontStyle: 'italic'
   }
 });

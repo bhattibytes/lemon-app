@@ -14,7 +14,7 @@ export default function Header() {
 const headerStyles = StyleSheet.create({
   viewContainer: {
     flex: 0.2, 
-    backgroundColor: '#F4CE14'
+    backgroundColor: '#EE9972'
   },
 
   text: {

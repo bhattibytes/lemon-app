@@ -16,21 +16,21 @@ const welcomeStyles = StyleSheet.create({
     flex: 1, 
     paddingTop: 0, 
     paddingLeft: 20, 
-    backgroundColor: "#495E57" 
+    backgroundColor: '#333333'
   },
 
   title: {
     marginTop: 20,
     fontSize: 30, 
     fontWeight: 'bold', 
-    color: '#F4CE14',
+    color: 'white',
     textAlign: 'center'
   },
 
   text: {
     padding: 15, 
     fontSize: 20, 
-    color: '#F4CE14',
+    color: 'white',
     textAlign: 'center'
   },
 
