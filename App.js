@@ -1,11 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import Header from './components/Header.js';
+import Footer from './components/Footer.js';
+import Welcome from './components/Welcome.js';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello Lemon App!</Text>
+      <Header />
+      <Welcome />
       <StatusBar style="auto" />
+      <Footer />
     </View>
   );
 }
@@ -13,12 +18,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#495E57',
   },
-
-  text:{
-    fontSize: 30,
-  }
 });
