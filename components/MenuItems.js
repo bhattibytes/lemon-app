@@ -1,53 +1,73 @@
 import * as React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 
-const items = [
-  { id: 1, name: 'Appetizers' },
-  { id: 2, name: 'Entrees' },
-  { id: 3, name: 'Desserts' },
-  { id: 4, name: 'Soft Drinks' },
-  { id: 5, name: 'Beer' },
-  { id: 6, name: 'Wine' },
-  { id: 7, name: 'Mixed Drinks' },
-]
+const menuItemsToDisplay = [
+  { name: 'Hummus', price: '$5.00', id: '1A' },
+  { name: 'Moutabal', price: '$5.00', id: '2B' },
+  { name: 'Falafel', price: '$7.50', id: '3C' },
+  { name: 'Marinated Olives', price: '$5.00', id: '4D' },
+  { name: 'Kofta', price: '$5.00', id: '5E' },
+  { name: 'Eggplant Salad', price: '$8.50', id: '6F' },
+  { name: 'Lentil Burger', price: '$10.00', id: '7G' },
+  { name: 'Smoked Salmon', price: '$14.00', id: '8H' },
+  { name: 'Kofta Burger', price: '$11.00', id: '9I' },
+  { name: 'Turkish Kebab', price: '$15.50', id: '10J' },
+  { name: 'Fries', price: '$3.00', id: '11K' },
+  { name: 'Buttered Rice', price: '$3.00', id: '12L' },
+  { name: 'Bread Sticks', price: '$3.00', id: '13M' },
+  { name: 'Pita Pocket', price: '$3.00', id: '14N' },
+  { name: 'Lentil Soup', price: '$3.75', id: '15O' },
+  { name: 'Greek Salad', price: '$6.00', id: '16Q' },
+  { name: 'Rice Pilaf', price: '$4.00', id: '17R' },
+  { name: 'Baklava', price: '$3.00', id: '18S' },
+  { name: 'Tartufo', price: '$3.00', id: '19T' },
+  { name: 'Tiramisu', price: '$5.00', id: '20U' },
+  { name: 'Panna Cotta', price: '$5.00', id: '21V' },
+];
 
-export default function MenuItems() {
+const Item = ({ name, price }) => (
+  <View style={menuStyles.innerContainer}>
+    <Text style={menuStyles.itemText}>{name}</Text>
+    <Text style={menuStyles.itemText}>{price}</Text>
+  </View>
+);
+
+const MenuItems = () => {
+  const renderItem = ({ item }) => <Item name={item.name} price={item.price} />;
+
   return (
-    <View style={menuStyles.viewContainer}>
-      <Text style={menuStyles.text}>
-        Menu Items {'\n'}
-        <Text>_____________________________</Text>
-      </Text>
-      <ScrollView 
-        style={menuStyles.scrollViewContainer} 
-        horizontal={false}
-        indicatorStyle='white'
-      >
-        {items.map((item) => (
-            <Text style={menuStyles.text} numberOfLines={1} key={item.id}>
-              {item.name}
-            </Text>
-        ))}
-      </ScrollView>
+    <View style={menuStyles.container}>
+      <Text style={menuStyles.title}>Menu Items</Text>
+      <FlatList
+        data={menuItemsToDisplay}
+        keyExtractor={(item) => item.id}
+        renderItem={renderItem}></FlatList>
     </View>
   );
-}
+};
 
 const menuStyles = StyleSheet.create({
-  viewContainer: {
+  container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: 'black'
   },
-
-  scrollViewContainer: {
-    flex: 1, 
+  innerContainer: {
+    paddingHorizontal: 40,
+    paddingVertical: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
-
-  text: {
-    padding: 20, 
-    fontSize: 20, 
-    color: 'white', 
-    textAlign: 'center',
+  title: {
+    marginTop: 20,
+    fontSize: 30,
     fontWeight: 'bold',
-  }
+    color: '#F4CE14',
+    textAlign: 'center',
+  },
+  itemText: {
+    color: '#F4CE14',
+    fontSize: 20,
+  },
 });
+
+export default MenuItems;
