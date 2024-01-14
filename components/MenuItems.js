@@ -14,9 +14,14 @@ const items = [
 export default function MenuItems() {
   return (
     <View style={menuStyles.viewContainer}>
-      <ScrollView style={menuStyles.scrollViewContainer} 
-      horizontal={false}
-      indicatorStyle='white'
+      <Text style={menuStyles.text}>
+        Menu Items {'\n'}
+        <Text>_____________________________</Text>
+      </Text>
+      <ScrollView 
+        style={menuStyles.scrollViewContainer} 
+        horizontal={false}
+        indicatorStyle='white'
       >
         {items.map((item) => (
             <Text style={menuStyles.text} numberOfLines={1} key={item.id}>
