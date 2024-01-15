@@ -22,7 +22,7 @@ const welcomeStyles = StyleSheet.create({
 
   title: {
     marginTop: 20,
-    fontSize: 40, 
+    fontSize: 30, 
     fontWeight: 'bold', 
     color: 'white',
     textAlign: 'center'

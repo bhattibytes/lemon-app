@@ -10,24 +10,49 @@ import LogInScreen from './components/LogInScreen.js';
 export default function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [showFeedBackForm, setShowFeedBackForm] = useState(false);
+  const [showLogIn, setShowLogIn] = useState(false);
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
+  const [userPassword, setUserPassword] = useState('');
 
   return (
     <View style={styles.main}>
       <Header />
-      { !showMenu && !showFeedBackForm && <Welcome />}
-      {!showFeedBackForm &&
+      { !showMenu && !showFeedBackForm && userLoggedIn && <Welcome />}
+      { !showFeedBackForm && userLoggedIn &&
         <Pressable onPress={()=> setShowMenu(!showMenu)} style={styles.pressBtn}>
           <Text style={styles.viewMenuBtn}> { showMenu ? 'Home' : 'View Menu Items'}</Text>
         </Pressable>
       }
-      {!showMenu &&
+      { !showMenu && userLoggedIn &&
         <Pressable onPress={()=> setShowFeedBackForm(!showFeedBackForm)} style={styles.pressBtn}>
           <Text style={styles.viewMenuBtn}> { showFeedBackForm ? 'Home' : 'Leave Feedback'}</Text>
         </Pressable>
       }
-      { showMenu && <MenuItemsSection /> }
-      { showFeedBackForm && <FeedBackForm /> }
-      {/* <LogInScreen /> */}
+      { showMenu && userLoggedIn && <MenuItemsSection /> }
+      { showFeedBackForm && userLoggedIn && <FeedBackForm /> }
+      { userLoggedIn && 
+        <Pressable onPress={()=> {
+          setShowLogIn(false), 
+          setUserLoggedIn(false),
+          setShowMenu(false),
+          setShowFeedBackForm(false)
+          }} style={styles.pressBtn}>
+          <Text style={styles.viewMenuBtn}> { userLoggedIn && 'Log Out'}</Text>
+        </Pressable>
+      }
+      { !userLoggedIn &&
+        <LogInScreen 
+          showLogIn={showLogIn} 
+          setShowLogIn={setShowLogIn} 
+          userLoggedIn={userLoggedIn} 
+          setUserLoggedIn={setUserLoggedIn}
+          userEmail={userEmail}
+          setUserEmail={setUserEmail}
+          userPassword={userPassword}
+          setUserPassword={setUserPassword}
+        />
+      }
       <Footer />
     </View>
   );
