@@ -54,7 +54,7 @@ const Item = ({ name }) => (
   </View>
 );
 
-export default  MenuItemsSection = () => {
+export default  MenuItemsSection = () => { 
   const renderItem = ({ item }) => <Item name={item} />;
   const renderSectionHeader = ({ section: { title } }) => (
     <View style={menuStyles.header}>
@@ -65,7 +65,6 @@ export default  MenuItemsSection = () => {
 
   return (
     <View style={menuStyles.container}>
-      <Text style={menuStyles.title}>Menu Items</Text>
       <SectionList
         sections={menuItemsToDisplay}
         keyExtractor={(item, index) => item + index}
@@ -94,14 +93,6 @@ const menuStyles = StyleSheet.create({
     fontSize: 30,
     flexWrap: 'wrap',
     textAlign: 'center',
-  },
-  title: {
-    marginTop: 20,
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#F4CE14',
-    textAlign: 'center',
-    fontWeight: 'bold',
   },
   itemText: {
     color: '#F4CE14',

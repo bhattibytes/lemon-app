@@ -24,11 +24,6 @@ export default function FeedBackForm() {
         <Text style={styles.headingSection}>
           How was your visit to Little Lemon?
         </Text>
-        <Text style={styles.infoSection}>
-          Little Lemon is a charming neighborhood bistro that serves simple food
-          and classic cocktails in a lively but casual environment. We would
-          love to hear your experience with us!
-        </Text>
         <TextInput
           style={styles.input}
           value={firstName}
