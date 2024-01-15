@@ -5,6 +5,7 @@ import Welcome from './components/Welcome.js';
 import MenuItems from './components/MenuItems.js';
 import MenuItemsSection from './components/MenuItemsSection.js';
 import FeedBackForm from './components/FeedBackForm.js';
+import LogInScreen from './components/LogInScreen.js';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       {/* <MenuItems /> */}
       {/* <MenuItemsSection /> */}
       <FeedBackForm />
+      {/* <LogInScreen /> */}
       <Footer />
     </View>
   );

@@ -6,6 +6,7 @@ import {
   TextInput, 
   KeyboardAvoidingView,
   Platform,
+  Alert,
 } from 'react-native';
 import { useState } from 'react';
 
@@ -33,12 +34,15 @@ export default function FeedBackForm() {
           value={firstName}
           onChangeText={onChangeFirstName}
           placeholder='First Name'
+          onFocus={() => Alert.alert('You are focused on the First Name field')}
+          clearButtonMode='always'
         />
         <TextInput
           style={styles.input}
           value={lastName}
           onChangeText={onChangeLastName}
           placeholder='Last Name'
+          clearButtonMode='always'
         />
           <TextInput
           style={styles.input}
@@ -46,6 +50,7 @@ export default function FeedBackForm() {
           onChangeText={onChangePhoneNumber}
           placeholder='Phone Number'
           keyboardType='numeric'
+          clearButtonMode='always'
         />
         <TextInput
           style={styles.messageInput}
@@ -53,6 +58,7 @@ export default function FeedBackForm() {
           onChangeText={onChangeMessage}
           placeholder='Write your message here...'
           maxLength={250}
+          clearButtonMode='always'
         />
       </ScrollView>
     </KeyboardAvoidingView>
