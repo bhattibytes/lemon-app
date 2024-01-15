@@ -4,14 +4,16 @@ import Footer from './components/Footer.js';
 import Welcome from './components/Welcome.js';
 import MenuItems from './components/MenuItems.js';
 import MenuItemsSection from './components/MenuItemsSection.js';
+import FeedBackForm from './components/FeedBackForm.js';
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Header />
-      <Welcome />
+      {/* <Welcome /> */}
       {/* <MenuItems /> */}
-      <MenuItemsSection />
+      {/* <MenuItemsSection /> */}
+      <FeedBackForm />
       <Footer />
     </View>
   );

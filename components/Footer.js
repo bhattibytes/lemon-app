@@ -14,8 +14,8 @@ export default function Footer() {
 
 const footerStyles = StyleSheet.create({
   viewContainer: {
-    flex: 0.15, 
-    backgroundColor: '#EE9972'
+    flex: 0.075, 
+    backgroundColor: '#F4CE14'
   },
 
   text: {
