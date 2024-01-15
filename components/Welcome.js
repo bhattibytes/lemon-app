@@ -1,12 +1,46 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { Text, StyleSheet, ScrollView, Image, ImageBackground } from 'react-native';
+import mac from '../assets/mac.png';
+import fruit from '../assets/fruit.jpeg';
+import chick from '../assets/chick.png';
+import cakes from '../assets/cakes.jpeg';
+import lemon from '../assets/lemon.png';
+
 
 export default function Welcome() {
   return (
     <ScrollView style={welcomeStyles.container} indicatorStyle='white'>
-      <Text style={welcomeStyles.title}>Welcome to Little {'\n'} Lemon</Text>
-      <Text>{'\n'}</Text>
-      <Text style={welcomeStyles.text}>Little Lemon is a charming neighborhood bistro that serves simple food and classic cocktails in a lively but casual environment. We would love to hear more about your experience with us!</Text>
+      
+        <Text style={welcomeStyles.title}>Welcome to Little {'\n'} Lemon</Text>
+        <Text>{'\n'}</Text>
+      <ImageBackground source={lemon} style={welcomeStyles.background}>
+        <Text style={welcomeStyles.text}>Little Lemon is a charming neighborhood bistro that serves simple food and classic cocktails in a lively but casual environment. We would love to hear more about your experience with us!</Text>
+      </ImageBackground>
+      <Image 
+        source={fruit} 
+        style={welcomeStyles.images}
+        accessible={true}
+        accessibilityLabel='Assorted Fruits'
+      />
+     <Image 
+        source={cakes} 
+        style={welcomeStyles.images}
+        accessible={true}
+        accessibilityLabel='Pancakes'
+        resizeMode= 'cover'
+      />
+     <Image 
+      source={chick} 
+      style={welcomeStyles.images}
+      accessible={true}
+      accessibilityLabel='Healthy Chicken'
+    />
+     <Image 
+      source={mac} 
+      style={welcomeStyles.images}
+      accessible={true}
+      accessibilityLabel='Pasta with Cheese'
+    />
     </ScrollView>
   );
 }
@@ -31,8 +65,26 @@ const welcomeStyles = StyleSheet.create({
   text: {
     padding: 15, 
     fontSize: 25, 
-    color: 'white',
-    textAlign: 'center'
+    color: 'black',
+    textAlign: 'center',
+    paddingBottom: 50,
+    fontWeight: 'bold',
+  },
+  
+  background: {
+    width: 350,
+    height: 400,
+    alignSelf: 'center',
+    resizeMode: 'contain',
+  },
+
+  images: {
+    marginTop: 20,
+    width: 300,
+    height: 200,
+    alignSelf: 'center',
+    borderRadius: 20,
+    resizeMode: 'contain',
   },
 
 });
