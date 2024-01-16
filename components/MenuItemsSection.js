@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, SectionList } from 'react-native';
+import { View, Text, StyleSheet, SectionList, Pressable } from 'react-native';
 
 
 const menuItemsToDisplay = [
@@ -54,7 +54,7 @@ const Item = ({ name }) => (
   </View>
 );
 
-export default  MenuItemsSection = () => { 
+export default  MenuItemsSection = ({ navigation }) => { 
   const renderItem = ({ item }) => <Item name={item} />;
   const renderSectionHeader = ({ section: { title } }) => (
     <View style={menuStyles.header}>
@@ -72,6 +72,9 @@ export default  MenuItemsSection = () => {
         renderSectionHeader={renderSectionHeader}
         ItemSeparatorComponent={Separator}
       />
+      <Pressable>
+        <Text style={menuStyles.nav} onPress={() => navigation.goBack()}>Go Back Home</Text>
+      </Pressable>
     </View>
   );
 };
@@ -97,6 +100,17 @@ const menuStyles = StyleSheet.create({
   itemText: {
     color: '#F4CE14',
     fontSize: 20,
+  },
+  nav: {
+    fontSize: 16,
+    backgroundColor: '#FFD700',
+    overflow: 'hidden',
+    padding: 20,
+    flex: .5,
+    borderWidth: 1,
+    borderRadius: 20,
+    borderColor: 'black',
+    alignSelf: 'center',
   },
   separator: {
     borderBottomWidth: 1,

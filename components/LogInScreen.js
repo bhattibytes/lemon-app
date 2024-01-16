@@ -10,7 +10,8 @@ import {
 } from 'react-native';
 import { useState } from 'react';
 
-export default function FeedBackForm({ 
+export default function LogInScreen({ 
+  navigation,
   showLogIn, 
   setShowLogIn, 
   userLoggedIn, 
@@ -130,7 +131,7 @@ export default function FeedBackForm({
             <Text style={styles.loginBtn}> { showLogIn && 'Log out'}</Text>
           </Pressable>
           <Pressable onPress={toggleLogIn} style={styles.pressBtn}>
-            <Text style={styles.loginBtn}> { showLogIn && 'Home'}</Text>
+            <Text style={styles.loginBtn} onPress={() => navigation.navigate('Home')}> { showLogIn && 'Home'}</Text>
           </Pressable>
         </>
       }

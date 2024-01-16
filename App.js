@@ -1,88 +1,82 @@
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import * as React from 'react';
 import { useState } from 'react';
-import Header from './components/Header.js';
-import Footer from './components/Footer.js';
-import Welcome from './components/Welcome.js';
-import MenuItemsSection from './components/MenuItemsSection.js';
-import FeedBackForm from './components/FeedBackForm.js';
-import LogInScreen from './components/LogInScreen.js';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import WelcomeScreen from './components/Welcome.js';
+import LoginScreen from './components/LogInScreen.js';
+import FeedBackForm from './components/LogInScreen.js';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Menu from './components/MenuItemsSection.js';
+
+const Stack = createNativeStackNavigator();
+
+const LogoTitle = () => {
+  return (
+    <Image
+      style={{ width: 50, height: 50, resizeMode: 'contain', alignSelf: 'center'}}
+      source={require('./assets/lemon.png')}
+    />
+  );
+};
 
 export default function App() {
-  const [showMenu, setShowMenu] = useState(false);
-  const [showFeedBackForm, setShowFeedBackForm] = useState(false);
   const [showLogIn, setShowLogIn] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
 
   return (
-    <View style={styles.main}>
-      <Header />
-      { !showMenu && !showFeedBackForm && userLoggedIn && <Welcome />}
-      { !showFeedBackForm && userLoggedIn &&
-        <Pressable onPress={()=> setShowMenu(!showMenu)} style={styles.pressBtn}>
-          <Text style={styles.viewMenuBtn}> { showMenu ? 'Home' : 'View Menu Items'}</Text>
-        </Pressable>
-      }
-      { !showMenu && userLoggedIn &&
-        <Pressable onPress={()=> setShowFeedBackForm(!showFeedBackForm)} style={styles.pressBtn}>
-          <Text style={styles.viewMenuBtn}> { showFeedBackForm ? 'Home' : 'Leave Feedback'}</Text>
-        </Pressable>
-      }
-      { showMenu && userLoggedIn && <MenuItemsSection /> }
-      { showFeedBackForm && userLoggedIn && <FeedBackForm /> }
-      { userLoggedIn && 
-        <Pressable onPress={()=> {
-          setShowLogIn(false), 
-          setUserLoggedIn(false),
-          setShowMenu(false),
-          setShowFeedBackForm(false)
-          }} style={styles.pressBtn}>
-          <Text style={styles.viewMenuBtn}> { userLoggedIn && 'Log Out'}</Text>
-        </Pressable>
-      }
-      { !userLoggedIn &&
-        <LogInScreen 
-          showLogIn={showLogIn} 
-          setShowLogIn={setShowLogIn} 
-          userLoggedIn={userLoggedIn} 
-          setUserLoggedIn={setUserLoggedIn}
-          userEmail={userEmail}
-          setUserEmail={setUserEmail}
-          userPassword={userPassword}
-          setUserPassword={setUserPassword}
-        />
-      }
-      <Footer />
-    </View>
+    <>
+      <NavigationContainer>
+        <View style={styles.container}>
+          <Header />
+          <Stack.Navigator 
+            initialRouteName="Login"
+            screenOptions={{ 
+              headerStyle: { backgroundColor: 'black' },
+              headerTintColor: 'white',
+              headerTitleStyle: { fontWeight: 'bold' },
+            }}
+          >
+            <Stack.Screen 
+              name="Home" 
+              component={WelcomeScreen} 
+              options={{
+                title: 'Home',
+                headerTitle: props => <LogoTitle {...props} />,
+              }}
+            />
+            <Stack.Screen name="Menu" component={Menu} />
+            <Stack.Screen name="Login">
+              {props => <LoginScreen {...props} 
+                showLogIn={showLogIn} 
+                setShowLogIn={setShowLogIn} 
+                userLoggedIn={userLoggedIn} 
+                setUserLoggedIn={setUserLoggedIn}
+                userEmail={userEmail}
+                setUserEmail={setUserEmail}
+                userPassword={userPassword}
+                setUserPassword={setUserPassword}
+              />}
+            </Stack.Screen>
+            <Stack.Screen name="Feedback" component={FeedBackForm} />
+          </Stack.Navigator>
+        </View>
+        <View style={styles.footerContainer}>
+          <Footer />
+        </View>
+      </NavigationContainer>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    backgroundColor: 'black',
-  },
   container: {
     flex: 1,
-    backgroundColor: 'black'
-  },
-  viewMenuBtn: {
-    marginTop: 20,
-    fontSize: 20,
-    padding: 10,
-    width: '70%',
-    fontWeight: 'bold',
-    color: '#F4CE14',
     backgroundColor: '#333333',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    borderWidth: 2,
-    borderColor: '#F4CE14',
-    borderRadius: 5,
-    marginBottom: 10,
   },
-  pressBtn: {
-    alignItems: 'center',
-  },
+  footerContainer: { backgroundColor: '#333333' },
 });
+

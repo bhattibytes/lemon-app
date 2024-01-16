@@ -7,6 +7,7 @@ import {
   ImageBackground, 
   useColorScheme, 
   useWindowDimensions,
+  Pressable,
 } from 'react-native';
 import mac from '../assets/mac.png';
 import fruit from '../assets/fruit.jpeg';
@@ -15,7 +16,7 @@ import cakes from '../assets/cakes.jpeg';
 import lemon from '../assets/lemon.png';
 
 
-export default function Welcome() {
+export default function Welcome({ navigation }) {
   const colorScheme = useColorScheme();
   const {width, height, fontScale} = useWindowDimensions();
 
@@ -62,6 +63,9 @@ export default function Welcome() {
       accessible={true}
       accessibilityLabel='Pasta with Cheese'
     />
+    <Pressable>
+      <Text style={welcomeStyles.nav} onPress={() => navigation.navigate('Menu')}>Go To - Menu Items</Text>
+    </Pressable>
     </ScrollView>
   );
 }
@@ -97,6 +101,18 @@ const welcomeStyles = StyleSheet.create({
     fontSize: 20, 
     color: 'black',
     fontWeight: 'bold',
+  },
+
+  nav: {
+    fontSize: 30,
+    backgroundColor: '#FFD700',
+    overflow: 'hidden',
+    padding: 10,
+    flex: 1,
+    borderWidth: 1,
+    borderRadius: 20,
+    borderColor: 'black',
+    alignSelf: 'center',
   },
   
   background: {
