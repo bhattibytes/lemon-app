@@ -21,52 +21,55 @@ export default function Welcome({ navigation }) {
   const {width, height, fontScale} = useWindowDimensions();
 
   return (
-    <ScrollView 
-      indicatorStyle='white'
-      style={[
-        welcomeStyles.container, 
-        colorScheme === 'light' ? {backgroundColor: 'white'} 
-        : {backgroundColor: '#333333'}
-    ]}>
-        <Text style={welcomeStyles.title}>Window Dimensions</Text>
-        <Text style={welcomeStyles.text2}>Height: {height}</Text>
-        <Text style={welcomeStyles.text2}>Width: {width}</Text>
-        <Text style={welcomeStyles.text2}>Font Scale: {fontScale}</Text>
+    <>
+      <ScrollView 
+        indicatorStyle='white'
+        style={[
+          welcomeStyles.container, 
+          colorScheme === 'light' ? {backgroundColor: 'white'} 
+          : {backgroundColor: '#333333'}
+      ]}>
+          <Text style={welcomeStyles.title}>Window Dimensions</Text>
+          <Text style={welcomeStyles.text2}>Height: {height}</Text>
+          <Text style={welcomeStyles.text2}>Width: {width}</Text>
+          <Text style={welcomeStyles.text2}>Font Scale: {fontScale}</Text>
 
-        <Text style={welcomeStyles.title}>Welcome to Little {'\n'} Lemon</Text>
-        <Text>{'\n'}</Text>
-      <ImageBackground source={lemon} style={welcomeStyles.background}>
-        <Text style={welcomeStyles.text}>Little Lemon is a charming neighborhood bistro that serves simple food and classic cocktails in a lively but casual environment. We would love to hear more about your experience with us!</Text>
-      </ImageBackground>
+          <Text style={welcomeStyles.title}>Welcome to Little {'\n'} Lemon</Text>
+          <Text>{'\n'}</Text>
+        <ImageBackground source={lemon} style={welcomeStyles.background}>
+          <Text style={welcomeStyles.text}>Little Lemon is a charming neighborhood bistro that serves simple food and classic cocktails in a lively but casual environment. We would love to hear more about your experience with us!</Text>
+        </ImageBackground>
+        <Image 
+          source={fruit} 
+          style={welcomeStyles.images}
+          accessible={true}
+          accessibilityLabel='Assorted Fruits'
+        />
       <Image 
-        source={fruit} 
+          source={cakes} 
+          style={welcomeStyles.images}
+          accessible={true}
+          accessibilityLabel='Pancakes'
+          resizeMode= 'cover'
+        />
+      <Image 
+        source={chick} 
         style={welcomeStyles.images}
         accessible={true}
-        accessibilityLabel='Assorted Fruits'
+        accessibilityLabel='Healthy Chicken'
       />
-     <Image 
-        source={cakes} 
+      <Image 
+        source={mac} 
         style={welcomeStyles.images}
         accessible={true}
-        accessibilityLabel='Pancakes'
-        resizeMode= 'cover'
+        accessibilityLabel='Pasta with Cheese'
       />
-     <Image 
-      source={chick} 
-      style={welcomeStyles.images}
-      accessible={true}
-      accessibilityLabel='Healthy Chicken'
-    />
-     <Image 
-      source={mac} 
-      style={welcomeStyles.images}
-      accessible={true}
-      accessibilityLabel='Pasta with Cheese'
-    />
-    <Pressable>
-      <Text style={welcomeStyles.nav} onPress={() => navigation.navigate('Menu')}>Go To - Menu Items</Text>
-    </Pressable>
-    </ScrollView>
+    
+      </ScrollView>
+      <Pressable>
+        <Text style={welcomeStyles.nav} onPress={() => navigation.navigate('Menu')}>Go To - Menu Items</Text>
+      </Pressable>
+    </>
   );
 }
 
@@ -104,11 +107,12 @@ const welcomeStyles = StyleSheet.create({
   },
 
   nav: {
-    fontSize: 30,
+    fontSize: 16,
     backgroundColor: '#FFD700',
     overflow: 'hidden',
-    padding: 10,
-    flex: 1,
+    padding: 20,
+    paddingBottom: 40,
+    flex: .5,
     borderWidth: 1,
     borderRadius: 20,
     borderColor: 'black',

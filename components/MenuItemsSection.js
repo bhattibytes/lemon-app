@@ -73,7 +73,7 @@ export default  MenuItemsSection = ({ navigation }) => {
         ItemSeparatorComponent={Separator}
       />
       <Pressable>
-        <Text style={menuStyles.nav} onPress={() => navigation.goBack()}>Go Back Home</Text>
+        <Text style={menuStyles.nav} onPress={() => navigation.navigate('Feedback')}>Leave Feedback</Text>
       </Pressable>
     </View>
   );
@@ -106,6 +106,7 @@ const menuStyles = StyleSheet.create({
     backgroundColor: '#FFD700',
     overflow: 'hidden',
     padding: 20,
+    paddingBottom: 40,
     flex: .5,
     borderWidth: 1,
     borderRadius: 20,

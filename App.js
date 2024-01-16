@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import WelcomeScreen from './components/Welcome.js';
 import LoginScreen from './components/LogInScreen.js';
-import FeedBackForm from './components/LogInScreen.js';
+import FeedBackForm from './components/FeedBackForm.js';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Menu from './components/MenuItemsSection.js';
