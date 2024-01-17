@@ -6,7 +6,6 @@ import {
   TextInput, 
   KeyboardAvoidingView,
   Platform,
-  Alert,
 } from 'react-native';
 import { useState } from 'react';
 
@@ -29,7 +28,6 @@ export default function FeedBackForm() {
           value={firstName}
           onChangeText={onChangeFirstName}
           placeholder='First Name'
-          onFocus={() => Alert.alert('You are focused on the First Name field')}
           clearButtonMode='always'
         />
         <TextInput
