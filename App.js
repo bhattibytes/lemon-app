@@ -9,13 +9,14 @@ import FeedBackForm from './components/FeedBackForm.js';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Menu from './components/MenuItemsSection.js';
+import SubscribeForm from './components/Subscribe.js';
 
 const Stack = createNativeStackNavigator();
 
 const LogoTitle = () => {
   return (
     <Image
-      style={{ width: 50, height: 50, resizeMode: 'contain', alignSelf: 'center'}}
+      style={{ width: 40, height: 40, resizeMode: 'contain', alignSelf: 'center'}}
       source={require('./assets/lemon.png')}
     />
   );
@@ -30,8 +31,9 @@ export default function App() {
   return (
     <>
       <NavigationContainer>
+      <Header />
         <View style={styles.container}>
-          <Header />
+          
           <Stack.Navigator 
             initialRouteName="Login"
             screenOptions={{ 
@@ -48,6 +50,8 @@ export default function App() {
                 headerTitle: props => <LogoTitle {...props} />,
               }}
             />
+           
+            <Stack.Screen name="Subscribe" component={SubscribeForm} />
             <Stack.Screen name="Menu" component={Menu} />
             <Stack.Screen name="Login">
               {props => <LoginScreen {...props} 
@@ -63,10 +67,9 @@ export default function App() {
             </Stack.Screen>
             <Stack.Screen name="Feedback" component={FeedBackForm} />
           </Stack.Navigator>
+         
         </View>
-        <View style={styles.footerContainer}>
-          <Footer />
-        </View>
+        <Footer />
       </NavigationContainer>
     </>
   );
@@ -77,6 +80,5 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#333333',
   },
-  footerContainer: { backgroundColor: '#333333' },
 });
 
